@@ -29,10 +29,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE IF NOT EXISTS "+ TABLE_NAME + "(" +
                 COL_ID +" INTEGER PRIMARY KEY AUTOINCREMENT," +
-                COL_EMAIL + "VARCHAR(30)," +
-                COL_USERNAME + "VARCHAR(30)," +
-                COL_PASSWORD + "VARCHAR(30)," +
-                COL_FULLNAME + "VARCHAR(30))";
+                COL_EMAIL + " VARCHAR(30)," +
+                COL_USERNAME + " VARCHAR(30)," +
+                COL_PASSWORD + " VARCHAR(30)," +
+                COL_FULLNAME + " VARCHAR(30))";
         db.execSQL(createTable);
     }
 
@@ -66,5 +66,50 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM "+ TABLE_NAME,null);
+    }
+
+    public Cursor getUserData(String username)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT email,username,password FROM " + TABLE_NAME +" WHERE username ='"+username+"'",null);
+    }
+
+    public boolean Login(String email,String username,String password)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        felhasznalo f = new felhasznalo();
+        Cursor Data = this.getUserData(username);
+        if(Data.getCount() == 0)
+        {
+            return false;
+        }
+        while(Data.moveToNext())
+        {
+            if(Data.getString(1).equals(password))
+            {
+                felhasznalo = new felhasznalo();
+                felhasznalo.setUsername(username);
+                return true;
+            }
+            else
+                {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    public String loginName(String s)
+    {
+        nev += s;
+        return s;
+    }
+
+    public String getName(){return nev;}
+
+    public Cursor getFullName()
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT fullname FROM "+TABLE_NAME + " WHERE username ='"+felhasznalo.getUsername()+",",null);
     }
 }
