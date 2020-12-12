@@ -74,7 +74,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return db.rawQuery("SELECT email,username,password FROM " + TABLE_NAME +" WHERE username ='"+username+"'",null);
     }
 
-    public boolean Login(String email,String username,String password)
+    public boolean Login(String username,String password)
     {
         SQLiteDatabase db = this.getReadableDatabase();
         felhasznalo f = new felhasznalo();
