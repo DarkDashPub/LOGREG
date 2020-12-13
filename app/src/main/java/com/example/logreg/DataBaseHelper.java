@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
@@ -83,7 +84,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             if(Data.getString(1).equals(password))
             {
                 felhasznalo = new felhasznalo();
-                felhasznalo.setUsername(username);
+                felhasznalo.setUsername(Data.getString(0));
                 return true;
             }
             else
@@ -97,7 +98,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public Cursor getUserData(String username)
     {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT username,password FROM " + TABLE_NAME +" WHERE username ='"+username+"'",null);
+        if(username.contains("@")) {
+            return db.rawQuery("SELECT email,password FROM " + TABLE_NAME + " WHERE email ='" + username + "'", null);
+        }
+        else
+            {
+                return db.rawQuery("SELECT username,password FROM " + TABLE_NAME + " WHERE username ='"+ username +"'",null);
+            }
     }
 
     public String loginName(String s)
