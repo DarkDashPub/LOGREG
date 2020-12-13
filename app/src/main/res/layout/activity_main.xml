@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -15,8 +16,6 @@
             android:id="@+id/editText_LoginUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
             android:hint="Felhasználónév vagy e-mail" />
 
         <EditText
@@ -39,4 +38,4 @@
             android:layout_height="wrap_content"
             android:text="Regisztráció" />
     </LinearLayout>
-</>
+</RelativeLayout>

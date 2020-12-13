@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
                 String username = editTextUsername.getText().toString();
                 String password = editTextPassword.getText().toString();
 
+                Toast.makeText(MainActivity.this,username+" "+password,Toast.LENGTH_SHORT).show();
+
                 if(username.isEmpty() || password.isEmpty())
                 {
                     Toast.makeText(MainActivity.this,"Felhasználónév vagy E-mail és jelszó szükséges!",Toast.LENGTH_SHORT).show();
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                     {
 
-                        if(dbhelper.Login(username,password))
+                        if(dbhelper.Login(username,password) == true)
                         {
                             Intent loggedin = new Intent(MainActivity.this, loggedin.class);
                             startActivity(loggedin);

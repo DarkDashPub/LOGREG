@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="textEmailAddress"
             android:hint="E-mail" />
 
         <EditText
@@ -21,14 +21,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
             android:hint="Felhasználónév" />
 
         <EditText
             android:id="@+id/editTextRegistrationPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:inputType="textPassword"
             android:hint="Jelszó"/>
 
@@ -36,8 +34,6 @@
             android:id="@+id/editTextRegistrationFullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
             android:hint="Teljes név" />
 
         <Button

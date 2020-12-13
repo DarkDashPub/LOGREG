@@ -41,6 +41,14 @@ public class Regisztracio extends AppCompatActivity {
 
             }
         });
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent back = new Intent(Regisztracio.this,MainActivity.class);
+                startActivity(back);
+                finish();
+            }
+        });
     }
 
     public void dataRecord(String email,String username, String password, String fullname)

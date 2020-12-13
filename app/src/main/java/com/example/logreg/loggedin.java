@@ -19,23 +19,23 @@ public class loggedin extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_loggedin);
         init();
 
         DataBaseHelper dbhelper = new DataBaseHelper(loggedin.this);
         Cursor datas = dbhelper.getFullName();
         String login = dbhelper.getName();
-        StringBuffer stringBuffer = new StringBuffer();
-
+        String fullnev = "Üdvözöllek: ";
         if(datas.getCount() == 0)
         {
-            stringBuffer.append("Üdvözöllek " + dbhelper.felhasznalo.getUsername());
+            fullnev += dbhelper.felhasznalo.getUsername();
         }
 
         while(datas.moveToNext())
         {
-            stringBuffer.append("Üdvözöllek: "+datas.getString(0));
+            fullnev += dbhelper.felhasznalo.getUsername();
         }
-        textViewFullName.setText(stringBuffer.toString());
+        textViewFullName.setText(fullnev);
 
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override

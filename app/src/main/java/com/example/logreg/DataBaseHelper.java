@@ -68,11 +68,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM "+ TABLE_NAME,null);
     }
 
-    public Cursor getUserData(String username)
-    {
-        SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT email,username,password FROM " + TABLE_NAME +" WHERE username ='"+username+"'",null);
-    }
 
     public boolean Login(String username,String password)
     {
@@ -99,6 +94,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return false;
     }
 
+    public Cursor getUserData(String username)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT username,password FROM " + TABLE_NAME +" WHERE username ='"+username+"'",null);
+    }
+
     public String loginName(String s)
     {
         nev += s;
@@ -110,6 +111,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public Cursor getFullName()
     {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT fullname FROM "+TABLE_NAME + " WHERE username ='"+felhasznalo.getUsername()+",",null);
+        return db.rawQuery("SELECT fullname FROM "+TABLE_NAME + " WHERE username ='"+felhasznalo.getUsername()+"'",null);
     }
 }
